@@ -1,0 +1,21 @@
+---
+# roles/nginx/tasks/main.yml
+
+- name: Install Nginx
+  apt:
+    pkg: nginx
+    state: present
+  sudo: yes
+
+- name: Configure Nginx
+  copy:
+    src: nginx.conf
+    dest: /etc/sites-enabled/default
+  sudo: yes
+
+- name: Enable and start Nginx
+  service:
+    name: nginx
+    enabled: yes
+    state: restarted
+  sudo: yes
