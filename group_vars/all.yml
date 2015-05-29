@@ -1,0 +1,13 @@
+---
+# group_vars/all.yml
+
+region: us-east-1
+zone: us-east-1a
+keypair: YOUR_KEYPAIR
+security_groups: YOUR_SECURITY_GROUP
+instance_type: m3.medium
+volumes:
+  - device_name: /dev/sda1
+    device_type: gp2
+    volume_size: 20
+    delete_on_termination: true

@@ -1,0 +1,9 @@
+---
+# deploy.yml
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - role: launch
+      name: ami-build
