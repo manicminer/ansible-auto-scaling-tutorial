@@ -29,6 +29,7 @@
     - create-ami
     - create-launch-configuration
     - load-balancer
+    - auto-scaling
 
 - hosts: old-ami-build
   roles:
