@@ -1,0 +1,16 @@
+---
+# roles/delete-old-launch-configurations/tasks/main.yml
+
+- lc_find:
+    region: "{{ region }}"
+    name_regex: "webapp-.*"
+    sort: yes
+    sort_end: -10
+  register: old_lc_result
+
+- ec2_lc:
+    region: "{{ region }}"
+    name: "{{ item.name }}"
+    state: absent
+  with_items: old_lc_result.results
+  ignore_errors: yes

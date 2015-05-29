@@ -11,3 +11,4 @@ volumes:
     device_type: gp2
     volume_size: 20
     delete_on_termination: true
+domain: YOUR_DOMAIN_NAME

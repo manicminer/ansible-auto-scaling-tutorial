@@ -1,0 +1,18 @@
+---
+# roles/delete-old-amis/tasks/main.yml
+
+- ec2_ami_find:
+    region: "{{ region }}"
+    owner: self
+    name: "webapp-*"
+    sort: name
+    sort_end: -10
+  register: old_ami_result
+
+- ec2_ami:
+    region: "{{ region }}"
+    image_id: "{{ item.ami_id }}"
+    delete_snapshot: yes
+    state: absent
+  with_items: old_ami_result.results
+  ignore_errors: yes
