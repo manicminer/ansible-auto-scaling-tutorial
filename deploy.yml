@@ -12,3 +12,9 @@
   roles:
     - deploy
     - nginx
+
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+    - create-ami
