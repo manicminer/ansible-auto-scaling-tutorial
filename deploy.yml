@@ -1,6 +1,15 @@
 ---
 # deploy.yml
 
+- name: Find existing instance(s)
+  hosts: "tag_Name_ami-build"
+  gather_facts: false
+  tags: find
+  tasks:
+    - name: Add to old-ami-build group
+      group_by:
+        key: old-ami-build
+
 - hosts: localhost
   connection: local
   gather_facts: no
@@ -18,3 +27,7 @@
   gather_facts: no
   roles:
     - create-ami
+
+- hosts: old-ami-build
+  roles:
+    - terminate

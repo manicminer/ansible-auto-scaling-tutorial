@@ -1,0 +1,8 @@
+---
+# roles/terminate/tasks/main.yml
+- name: Terminate old instance(s)
+  ec2:
+    instance_ids: "{{ ec2_id }}"
+    region: "{{ region }}"
+    state: absent
+    wait: yes
