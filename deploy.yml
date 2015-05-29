@@ -28,6 +28,7 @@
   roles:
     - create-ami
     - create-launch-configuration
+    - load-balancer
 
 - hosts: old-ami-build
   roles:

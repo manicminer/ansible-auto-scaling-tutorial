@@ -1,0 +1,23 @@
+---
+# roles/load-balancer/tasks/main.yml
+
+- name: Configure Elastic Load Balancers
+  ec2_elb_lb:
+    region: "{{ region }}"
+    name: webapp
+    state: present
+    zones: "{{ zone }}"
+    connection_draining_timeout: 60
+    listeners:
+      - protocol: http
+        load_balancer_port: 80
+        instance_port: 80
+    health_check:
+      ping_protocol: http
+      ping_port: 80
+      ping_path: "/"
+      response_timeout: 10
+      interval: 30
+      unhealthy_threshold: 6
+      healthy_threshold: 2
+  register: elb_result
