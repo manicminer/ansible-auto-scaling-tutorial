@@ -27,6 +27,7 @@
   gather_facts: no
   roles:
     - create-ami
+    - create-launch-configuration
 
 - hosts: old-ami-build
   roles:
