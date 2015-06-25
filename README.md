@@ -125,6 +125,8 @@ volumes:
   with_items: ec2.instances
 ```
 
+The ec2_ami_find module is a new addition to Ansible 2.0 but has not been backported to 1.9, so we'll need to [import this module from GitHub](https://raw.githubusercontent.com/ansible/ansible-modules-core/devel/cloud/amazon/ec2_ami_find.py) and place it into the `library/` directory relative to `deploy.yml`.
+
 Run the playbook with `ansible-playbook deploy.yml -vv` and a new instance will be launched. You'll see it in the AWS Web Console and you should be able to SSH to it.
 
 ## Step 2: Deploy the application
