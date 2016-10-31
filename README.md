@@ -46,6 +46,7 @@ Modify `/etc/ansible/ansible.cfg` to use that directory as the inventory source:
 ```ini
 # /etc/ansible/ansible.cfg
 inventory = /etc/ansible/inventory
+error_on_undefined_vars = False
 ```
 
 
