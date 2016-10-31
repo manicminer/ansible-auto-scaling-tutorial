@@ -320,6 +320,7 @@ You'll probably have noticed by now that each time the playbook is run, Ansible 
     - create-ami
 
 - hosts: old-ami-build
+  connection: local
   roles:
     - terminate
 ```
@@ -372,6 +373,7 @@ Our AMI is built, so now we'll want to create a new Launch Configuration to desc
     - create-launch-configuration
 
 - hosts: old-ami-build
+  connection: local
   roles:
     - terminate
 ```
@@ -430,6 +432,7 @@ Clients will connect to an Elastic Load Balancer which will distribute incoming 
     - load-balancer
 
 - hosts: old-ami-build
+  connection: local
   roles:
     - terminate
 ```
@@ -499,6 +502,7 @@ We'll create an Auto Scaling Group and configure it to use the Launch Configurat
     - auto-scaling
 
 - hosts: old-ami-build
+  connection: local
   roles:
     - terminate
 ```
@@ -640,6 +644,7 @@ If you have a domain name, or subdomain, set up with AWS Route 53, you can have 
     - dns
 
 - hosts: old-ami-build
+  connection: local
   roles:
     - terminate
 ```
